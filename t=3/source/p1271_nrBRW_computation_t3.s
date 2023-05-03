@@ -18,7 +18,7 @@ movq %rcx, 104(%rsp)
 
 
 
-/*compute no_of_16-byte-blocks*/
+/*compute no_of_15-byte-blocks*/
 xorq %rdx, %rdx
 movq %rdi, %rax
 movq %rax, 112(%rsp)
