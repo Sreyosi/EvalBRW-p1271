@@ -22,7 +22,7 @@ movq 8(%rdx), %rbx
 
 
 
-/*compute no_of_16-byte-blocks*/
+/*compute no_of_15-byte-blocks*/
 xorq %rdx, %rdx
 movq %rdi, %rax
 movq %rax, 112(%rsp)
@@ -98,11 +98,11 @@ cm: cmpq    $0, %rbp
 jge     .START
 
 cmp $7, 80(%rsp)
-jle extra1 /**** jump to the extra section if number of bytes is at most 48 *****/ 
+jle extra1 /**** jump to the extra section if number of blocks is at most 7 *****/ 
 
 
 
-     /**** For larger messages we need to compute number of chunks of blocks of input messages with number of look-ahead blocks(in this that no of look-ahead blocks is 4)********/ 
+     /**** For larger messages we need to compute number of chunks of blocks of input messages with number of look-ahead blocks(in this that no of look-ahead blocks is 8)********/ 
      comp_lookahead:    /*compute no of perfect chunks of look-ahead blocks*/
 		
 		xorq %rdx, %rdx
@@ -127,7 +127,7 @@ jle extra1 /**** jump to the extra section if number of bytes is at most 48 ****
      movq $0, 120(%rsp)
 
 
-/*nrBRW Computation for messsages at least 128 bytes long*/
+/*nrBRW Computation for messsages at 8-block long*/
         
 start:          movq 64(%rsp), %rdx
                
